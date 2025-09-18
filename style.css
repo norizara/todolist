@@ -1,0 +1,129 @@
+:root{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --main-blue: rgb(0,0,169);
+    --alt-blue: rgb(0,0,100);
+}
+
+h1 {
+    text-align: center;
+}
+
+.addTask {
+    display: grid;
+    grid-template-columns: 10rem 14rem; /* two columns for desktop */
+    gap: 10px;
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+#task, #date {
+    width: 100%;
+}
+
+#desc {
+    grid-column: 1 / span 2;
+    width: 100%;
+    height: 80px;
+}
+
+#add-btn {
+    grid-column: 1 / span 2;
+    padding: 10px 20px;
+    border: 0;
+    background-color: var(--main-blue);
+    color: white;
+    cursor: pointer;
+}
+
+#add-btn:hover{
+    background-color: var(--alt-blue);
+}
+
+/* ✅ Make it responsive */
+@media (max-width: 500px) {
+    .addTask {
+        grid-template-columns: 1fr; /* stack fields vertically */
+    }
+
+    #desc,
+    #add-btn {
+        grid-column: 1; /* don’t force spanning */
+    }
+
+    #add-btn {
+        width: 100%;  /* button full width on small screens */
+    }
+}
+
+
+.view-mode {
+    margin-top: 2.5rem;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.view-mode .actions {
+    margin-top: 10px;
+}
+
+.edit-mode {
+    display: grid;
+    grid-template-columns: 10rem 14rem; /* same as .addTask */
+    gap: 10px;
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    text-align: left; /* better alignment for form fields */
+}
+
+.edit-mode input,
+.edit-mode textarea,
+.edit-mode button {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.edit-mode textarea {
+    grid-column: 1 / span 2;
+    height: 80px;
+    resize: none;
+}
+
+.edit-mode button {
+    grid-column: 1 / span 2;
+    padding: 10px 20px;
+    border: 0;
+    background-color: var(--main-blue);
+    color: white;
+    cursor: pointer;
+}
+
+.edit-mode button:hover {
+    background-color: var(--alt-blue);
+}
+
+@media (max-width: 500px) {
+    .edit-mode {
+        grid-template-columns: 1fr;
+    }
+
+    .edit-mode textarea,
+    .edit-mode button {
+        grid-column: 1;
+    }
+
+    .edit-mode button {
+        width: 100%;
+    }
+}
+
+hr {
+    margin-top: 2.5rem;
+    width: 90%;
+}

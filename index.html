@@ -3,9 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>To Do List</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <p>Check</p>
+    <h1>
+        To-Do-List
+    </h1>
+    <form class="addTask">
+        <input type="date" id="date" required>
+        <input type="text" placeholder="Task Name" id="task" required>
+        <textarea maxlength="300" placeholder="Description" id="desc" required></textarea>
+        <button type="submit" id="add-btn">Add Task</button>
+    </form>
+    <hr>
+    <div class="taskDisplay"></div>
+    <script src="script.js"></script>
 </body>
 </html>
