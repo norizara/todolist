@@ -153,3 +153,17 @@ document.addEventListener("DOMContentLoaded", () => {
     installBtn.style.display = "none"; // hide after install
   });
 });
+
+function removeExpiredTasks() {
+  const today = new Date().toISOString().split("T")[0]; // YYYY-MM-DD
+
+  let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+  tasks = tasks.filter(task => task.date >= today); // keep only future or today
+
+  localStorage.setItem("tasks", JSON.stringify(tasks));
+  displayTasks(); // refresh UI
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  removeExpiredTasks();
+});
