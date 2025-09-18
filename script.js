@@ -127,28 +127,29 @@ window.saveEdit = function(index) {
 
 renderTasks();
 
+let deferredPrompt;
+
 document.addEventListener("DOMContentLoaded", () => {
   const installBtn = document.getElementById("install-btn");
-  if (installBtn) {
-    installBtn.addEventListener("click", () => {
-      let deferredPrompt;
-      const installBtn = document.getElementById("install-btn");
+  if (!installBtn) return;
 
-      window.addEventListener("beforeinstallprompt", (e) => {
-        e.preventDefault();
-        deferredPrompt = e;
-        installBtn.style.display = "block"; 
-      });
+  // Hide button by default
+  installBtn.style.display = "none";
 
-      installBtn.addEventListener("click", async () => {
-        if (!deferredPrompt) return;
+  // Listen for the beforeinstallprompt event
+  window.addEventListener("beforeinstallprompt", (e) => {
+    e.preventDefault(); // prevent default mini-infobar
+    deferredPrompt = e;
+    installBtn.style.display = "block"; // show the button
+  });
 
-        deferredPrompt.prompt();
-        const { outcome } = await deferredPrompt.userChoice;
-        console.log("User choice:", outcome);
-
-        deferredPrompt = null;
-      });
-    });
-  }
+  // Handle button click
+  installBtn.addEventListener("click", async () => {
+    if (!deferredPrompt) return;
+    deferredPrompt.prompt();
+    const { outcome } = await deferredPrompt.userChoice;
+    console.log(`User response: ${outcome}`);
+    deferredPrompt = null;
+    installBtn.style.display = "none"; // hide after install
+  });
 });
