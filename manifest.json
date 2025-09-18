@@ -8,12 +8,12 @@
   "description": "A simple Personal PWA To-Do List",
   "icons": [
     {
-      "src": "assets/book.png",
+      "src": "/assets/book.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "assets/book.png",
+      "src": "/assets/book.png",
       "sizes": "512x512",
       "type": "image/png"
     }
