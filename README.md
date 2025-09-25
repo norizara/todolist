@@ -7,3 +7,5 @@ How to install:
 - Run the HTML
 - The Install button should appear
 - Install it.
+
+note* PWA installation currently broken
